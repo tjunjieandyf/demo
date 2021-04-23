@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>onbeforeunload测试</title>
+<script>
+    (function(){
+        console.log(sessionStorage.getItem("key"))
+    })()
+</script>
+<script>
+     window.onbeforeunload = function() {
+        sessionStorage.setItem("key",1)
+    };
+    window.onunload = function() {
+        sessionStorage.setItem("key",2)
+    };
+</script>
+</head>
+<body onunload="checkLeave()">
+学习onbeforeunload 和 onunload 事件
+</body>
+</html>

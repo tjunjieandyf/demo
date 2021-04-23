@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tang.gaodeapi.dao.WryMapper">
+	
+	<select id="getCount" resultType="java.lang.Integer">
+		select count(1) from t_jsdw
+	</select>
+	
+	<!-- <select id="listWry" resultType="java.util.Map">
+		SELECT *
+		FROM (SELECT ROW_.*, ROWNUM ROWNUM_
+		          FROM (SELECT WRYBH,WRYMC,WRYDZ,JD,WD FROM T_WRY_WRYMD WHERE MARK <![CDATA[<>]]> '1' AND MARK <![CDATA[<>]]> '2' ORDER BY CJSJ DESC) ROW_
+		         WHERE ROWNUM <![CDATA[<=]]> #{pageSize})
+		WHERE ROWNUM_ <![CDATA[>=]]> #{pageNum}
+	</select> -->
+	<select id="listWry" resultType="map">
+		select * from t_cs
+	</select>
+	
+	<update id="updateLocation">
+		UPDATE T_CS SET JD=#{JD},WD=#{WD} WHERE XH = #{XH}
+	</update>
+	
+	<insert id="insert">
+		INSERT INTO T_CS(XH,JSDW,TYSHXYDM,FR,DZ,DJJG,HY,LXDH) VALUES(#{XH},#{JSDW},#{TYSHXYDM},#{FR},#{DZ},#{DJJG},#{HY},#{LXDH})
+	</insert>
+</mapper>
